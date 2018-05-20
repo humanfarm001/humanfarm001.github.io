@@ -75,10 +75,8 @@ function refreshData(){
     });
     updateBuyPrice()
     updateSellPrice()
-	updateSnailmasterPrice()
-	updateCurrentSnailmaster()
     var prldoc=document.getElementById('playerreflink')
-    prldoc.textContent=window.location+"?ref="+web3.eth.accounts[0]
+    prldoc.textContent=window.location.origin+"?ref="+web3.eth.accounts[0]
     var copyText = document.getElementById("copytextthing");
     copyText.value=prldoc.textContent
 }
@@ -135,29 +133,6 @@ function updateBuyPrice(){
         });
     });
 }
-
-function updateSnailmasterPrice(){
-    var snailmasterpricedoc=document.getElementById('snailmasterprice')
-    //eggstobuydoc.textContent='?'
-	getSnailmasterReq(function(req){
-		snailmasterpricedoc.textContent=100000
-	});
-}
-
-function updateCurrentSnailmaster(){
-    var currentsnailmasterdoc=document.getElementById('currentsnailmaster')
-    //eggstobuydoc.textContent='?'
-	currentsnailmaster.textContent=ceoAddress()
-}
-
-function getFreeShrimp2(){
-    var ethtospenddoc=0.001//document.getElementById('freesnailspend')
-    weitospend=web3.toWei(ethtospenddoc,'ether')
-    getFreeShrimp(weitospend,function(){
-        displayTransactionMessage();
-    });
-}
-	
 function buyEggs2(){
     var ethtospenddoc=document.getElementById('ethtospend')
     weitospend=web3.toWei(ethtospenddoc.value,'ether')
@@ -191,14 +166,23 @@ function translateQuantity(quantity,precision){
     if(quantity>1000000){
         modifier='M'
         finalquantity=quantity/1000000
+        if(precision==0){
+            precision=2
+        }
     }
     if(quantity>1000000000){
         modifier='B'
         finalquantity=quantity/1000000000
+        if(precision==0){
+            precision=2
+        }
     }
     if(quantity>1000000000000){
         modifier='T'
         finalquantity=quantity/1000000000000
+        if(precision==0){
+            precision=2
+        }
     }
     if(precision==0){
         finalquantity=Math.floor(finalquantity)
@@ -211,7 +195,7 @@ function removeModal(){
         modal.style.display = "none";
 }
 function displayTransactionMessage(){
-    displayModalMessage("Transaction Submitted. This can take a moment depending on the state of the Ethereum Network.")
+    displayModalMessage("Transaction Submitted")
 }
 function displayModalMessage(message){
     modal.style.display = "block";
