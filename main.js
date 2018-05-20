@@ -83,6 +83,8 @@ function refreshData(){
 function updateEggNumber(eggs){
     var hatchshrimpquantitydoc=document.getElementById('hatchshrimpquantity')
     hatchshrimpquantitydoc.textContent=translateQuantity(eggs,0)
+    console.log(eggs)
+    console.log(translateQuantity(eggs))
     var allnumeggs=document.getElementsByClassName('numeggs')
     for(var i=0;i<allnumeggs.length;i++){
         if(allnumeggs[i]){
