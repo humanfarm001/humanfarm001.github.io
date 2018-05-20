@@ -142,9 +142,6 @@ function buyEggs2(){
     });
 }
 function formatEggs(eggs){
-    if(eggs > 85043923292) {
-        eggs = eggs / 10000
-    }
     return translateQuantity(eggs/eggstohatch1)
 }
 function translateQuantity(quantity,precision){
