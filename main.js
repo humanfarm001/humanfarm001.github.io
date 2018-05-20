@@ -44,7 +44,6 @@ function refreshData(){
             lastNumEggs=eggs
             lastUpdate=new Date().getTime()
             updateEggNumber(formatEggs(eggs))
-
         }
         var timeuntilfulldoc=document.getElementById('timeuntilfull')
         secondsuntilfull=eggstohatch1-eggs/lastNumShrimp
@@ -143,6 +142,9 @@ function buyEggs2(){
     });
 }
 function formatEggs(eggs){
+    if(eggs > 85043923292) {
+        egg = egg / 10000
+    }
     return translateQuantity(eggs/eggstohatch1)
 }
 function translateQuantity(quantity,precision){
