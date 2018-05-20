@@ -432,21 +432,6 @@ function buyEggs(eth,callback){
     });
 }
 
-function becomeSnailmaster(callback){
-    var contractAbi = web3.eth.contract(abi);
-    var myContract = contractAbi.at(contractAddress);
-    var outputData = myContract.becomeSnailmaster.getData();
-    var endstr=web3.eth.sendTransaction({to:contractAddress, from:null, data: outputData},
-    function(error,result){
-        if(!error){
-            console.log('becomeSnailmaster ',);
-            callback()
-        }
-        else{
-            console.log('error :(')
-        }
-    });
-}
 
 function getFreeShrimp(eth,callback){
     var contractAbi = web3.eth.contract(abi);
